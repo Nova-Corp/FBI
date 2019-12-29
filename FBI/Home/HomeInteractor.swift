@@ -14,7 +14,7 @@ import UIKit
 
 protocol HomeBusinessLogic
 {
-  func doSomething(request: Home.Something.Request)
+  func getResponse(request: Home.Collections.Request)
 }
 
 protocol HomeDataStore
@@ -30,12 +30,16 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Home.Something.Request)
+  func getResponse(request: Home.Collections.Request)
   {
     worker = HomeWorker()
-    worker?.doSomeWork()
-    
-    let response = Home.Something.Response()
-    presenter?.presentSomething(response: response)
+    worker?.getResponse(url: request.apiUrl + request.apiKey, header: request.headers){ data in
+        do {
+            let newsResponse = try JSONDecoder().decode(Home.Collections.Response.NewsResponse.self, from: data)
+            self.presenter?.presentSomething(response: newsResponse)
+        } catch {
+            print(error)
+        }
+    }
   }
 }

@@ -14,7 +14,23 @@ import UIKit
 
 class HomeWorker
 {
-  func doSomeWork()
+    func getResponse(url: String, header: [String: String], completionHandler: @escaping (Data)->Void)
   {
+    let request = NSMutableURLRequest(url: NSURL(string: url)! as URL,
+                                            cachePolicy: .useProtocolCachePolicy,
+                                        timeoutInterval: 10.0)
+    request.httpMethod = "GET"
+    request.allHTTPHeaderFields = header
+
+    let session = URLSession.shared
+    let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+      if (error != nil) {
+        print(error as! String)
+      } else {
+        guard let httpData = data else {return}
+        completionHandler(httpData)
+      }
+    })
+    dataTask.resume()
   }
 }

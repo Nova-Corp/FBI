@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84847ED1234DB405003C64FA /* HomeViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84847ED0234DB405003C64FA /* HomeViewSetup.swift */; };
+		84959CE023461AA600B288FE /* sample_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84959CDF23461A1800B288FE /* sample_video.mp4 */; };
 		8498E2FE23431F1900FB424D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498E2FD23431F1900FB424D /* AppDelegate.swift */; };
 		8498E30023431F1900FB424D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498E2FF23431F1900FB424D /* SceneDelegate.swift */; };
 		8498E30823431F1900FB424D /* FBI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8498E30623431F1900FB424D /* FBI.xcdatamodeld */; };
@@ -26,9 +28,13 @@
 		8498E32C234320AD00FB424D /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498E326234320AD00FB424D /* LoginInteractor.swift */; };
 		8498E32F234321EF00FB424D /* LoginViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498E32E234321EF00FB424D /* LoginViewSetup.swift */; };
 		8498E33123432C6500FB424D /* CommonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498E33023432C6500FB424D /* CommonFile.swift */; };
+		B17E04C3BDE05B7CE80C9BCA /* Pods_FBI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B4E06315EF61D07E4A5BF9 /* Pods_FBI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44905498FE4157124F79EA58 /* Pods-FBI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBI.debug.xcconfig"; path = "Target Support Files/Pods-FBI/Pods-FBI.debug.xcconfig"; sourceTree = "<group>"; };
+		84847ED0234DB405003C64FA /* HomeViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSetup.swift; sourceTree = "<group>"; };
+		84959CDF23461A1800B288FE /* sample_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_video.mp4; sourceTree = "<group>"; };
 		8498E2FA23431F1900FB424D /* FBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8498E2FD23431F1900FB424D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8498E2FF23431F1900FB424D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +56,8 @@
 		8498E326234320AD00FB424D /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		8498E32E234321EF00FB424D /* LoginViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewSetup.swift; sourceTree = "<group>"; };
 		8498E33023432C6500FB424D /* CommonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFile.swift; sourceTree = "<group>"; };
+		E5B4E06315EF61D07E4A5BF9 /* Pods_FBI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC207F2AA7BCDEFE7DE71C92 /* Pods-FBI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBI.release.xcconfig"; path = "Target Support Files/Pods-FBI/Pods-FBI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B17E04C3BDE05B7CE80C9BCA /* Pods_FBI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +77,8 @@
 			children = (
 				8498E2FC23431F1900FB424D /* FBI */,
 				8498E2FB23431F1900FB424D /* Products */,
+				D58C64BA614C6FE1FF848540 /* Pods */,
+				FD5743A1E3D780364645CDDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +100,7 @@
 				8498E33223432C8E00FB424D /* SupportLib */,
 				8498E30923431F1B00FB424D /* Assets.xcassets */,
 				8498E30B23431F1B00FB424D /* LaunchScreen.storyboard */,
+				84959CDF23461A1800B288FE /* sample_video.mp4 */,
 				8498E30E23431F1B00FB424D /* Info.plist */,
 				8498E30623431F1900FB424D /* FBI.xcdatamodeld */,
 			);
@@ -104,6 +116,7 @@
 				8498E3172343207900FB424D /* HomeModels.swift */,
 				8498E3182343207900FB424D /* HomeViewController.swift */,
 				8498E3192343207900FB424D /* HomeInteractor.swift */,
+				84847ED0234DB405003C64FA /* HomeViewSetup.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -130,6 +143,23 @@
 			path = SupportLib;
 			sourceTree = "<group>";
 		};
+		D58C64BA614C6FE1FF848540 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44905498FE4157124F79EA58 /* Pods-FBI.debug.xcconfig */,
+				EC207F2AA7BCDEFE7DE71C92 /* Pods-FBI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD5743A1E3D780364645CDDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5B4E06315EF61D07E4A5BF9 /* Pods_FBI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8498E31123431F1B00FB424D /* Build configuration list for PBXNativeTarget "FBI" */;
 			buildPhases = (
+				572A63B324E2D37CC7A4BE6C /* [CP] Check Pods Manifest.lock */,
 				8498E2F623431F1900FB424D /* Sources */,
 				8498E2F723431F1900FB424D /* Frameworks */,
 				8498E2F823431F1900FB424D /* Resources */,
+				7718A43C22DDE83CD1272208 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,12 +220,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84959CE023461AA600B288FE /* sample_video.mp4 in Resources */,
 				8498E30D23431F1B00FB424D /* LaunchScreen.storyboard in Resources */,
 				8498E30A23431F1B00FB424D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		572A63B324E2D37CC7A4BE6C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FBI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7718A43C22DDE83CD1272208 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FBI/Pods-FBI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FBI/Pods-FBI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FBI/Pods-FBI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8498E2F623431F1900FB424D /* Sources */ = {
@@ -209,6 +284,7 @@
 				8498E2FE23431F1900FB424D /* AppDelegate.swift in Sources */,
 				8498E31E2343207900FB424D /* HomeViewController.swift in Sources */,
 				8498E327234320AD00FB424D /* LoginPresenter.swift in Sources */,
+				84847ED1234DB405003C64FA /* HomeViewSetup.swift in Sources */,
 				8498E33123432C6500FB424D /* CommonFile.swift in Sources */,
 				8498E32C234320AD00FB424D /* LoginInteractor.swift in Sources */,
 				8498E30023431F1900FB424D /* SceneDelegate.swift in Sources */,
@@ -350,11 +426,13 @@
 		};
 		8498E31223431F1B00FB424D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44905498FE4157124F79EA58 /* Pods-FBI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H922B55M85;
 				INFOPLIST_FILE = FBI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,11 +446,13 @@
 		};
 		8498E31323431F1B00FB424D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC207F2AA7BCDEFE7DE71C92 /* Pods-FBI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H922B55M85;
 				INFOPLIST_FILE = FBI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -16,13 +16,53 @@ enum Home
 {
   // MARK: Use cases
   
-  enum Something
+  enum Collections
   {
     struct Request
     {
+//        let apiUrl = "https://newsapi.org/v2/everything?q=bitcoin&from=2019-09-09&sortBy=publishedAt&apiKey="
+        let apiUrl = "https://newsapi.org/v2/top-headlines?country=IN&category=Business&apiKey="
+//        let apiUrl = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey="
+        let apiKey = "9ff1845847ce49bc8dee28f274b78456"
+        let headers = [
+          "Accept": "*/*",
+          "Host": "newsapi.org",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "cache-control": "no-cache"
+        ]
     }
     struct Response
     {
+        // MARK: - NewsResponse
+        struct NewsResponse: Codable {
+            let status: String?
+            let totalResults: Int?
+            let articles: [Article]?
+        }
+
+        // MARK: - Article
+        struct Article: Codable {
+            let source: Source?
+            let author: String?
+            let title, articleDescription: String?
+            let url: String?
+            let urlToImage: String?
+            let publishedAt: String?
+            let content: String?
+
+            enum CodingKeys: String, CodingKey {
+                case source, author, title
+                case articleDescription = "description"
+                case url, urlToImage, publishedAt, content
+            }
+        }
+
+        // MARK: - Source
+        struct Source: Codable {
+            let id: String?
+            let name: String?
+        }
     }
     struct ViewModel
     {

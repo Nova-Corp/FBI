@@ -12,13 +12,33 @@
 
 import UIKit
 
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
+import FBSDKPlacesKit
+import FacebookShare
+
+import MobileCoreServices
+
 protocol HomeDisplayLogic: class
 {
-  func displaySomething(viewModel: Home.Something.ViewModel)
+    func displayData(viewModel: Home.Collections.Response.NewsResponse)
 }
 
-class HomeViewController: UIViewController, HomeDisplayLogic
+class HomeViewController: UIViewController, HomeDisplayLogic, SharingDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate
 {
+    func sharer(_ sharer: Sharing, didCompleteWithResults results: [String : Any]) {
+        print(results)
+    }
+    
+    func sharer(_ sharer: Sharing, didFailWithError error: Error) {
+        print(error)
+    }
+    
+    func sharerDidCancel(_ sharer: Sharing) {
+        
+    }
+    
   var interactor: HomeBusinessLogic?
   var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
 
@@ -63,6 +83,16 @@ class HomeViewController: UIViewController, HomeDisplayLogic
       }
     }
   }
+    
+    let imageView = UIImageView()
+    let shareBtn = UIButton()
+//    let shareButton = FBShareButton()
+//    let content = ShareLinkContent()
+//    let content = SharePhotoContent()
+    let content = ShareLinkContent()
+    let path = Bundle.main.path(forResource: "sample_video", ofType:"mp4")!
+    let tableView = UITableView()
+    var newsData: Home.Collections.Response.NewsResponse?
   
   // MARK: View lifecycle
   
@@ -70,21 +100,138 @@ class HomeViewController: UIViewController, HomeDisplayLogic
   {
     super.viewDidLoad()
     view.backgroundColor = .white
-    doSomething()
+    getNewsFromServer()
+//    let loginBtn = FBLoginButton()
+//    loginBtn.center = view.center
+//    self.view.addSubview(loginBtn)
+    setNewsTableView()
+    
+//    setImageBtn()
+//    setShareBtn()
+//
+//
+//    shareBtn.addTarget(self, action: #selector(shareIt), for: .touchUpInside)
+    
+//    downloadVideo(from: "https://sample-videos.com/video123/mp4/360/big_buck_bunny_360p_1mb.mp4")
+    
+//    showShareDialog(content)
+    
+
   }
+    
+//    func downloadVideo(from url:String) {
+//        DispatchQueue.global(qos: .background).async {
+//            if let url = URL(string: url),
+//                let urlData = NSData(contentsOf: url) {
+//                let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
+//                let filePath="\(documentsPath)/tempFile.mp4"
+//                DispatchQueue.main.async {
+//                    urlData.write(toFile: filePath, atomically: true)
+//                    PHPhotoLibrary.shared().performChanges({
+//                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: filePath))
+//                    }) { completed, error in
+//                        if completed {
+//                            print("Video is saved!")
+//                            print(filePath)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+//    func createAssetURL(url: URL, completion: @escaping (String) -> Void) {
+//        let photoLibrary = PHPhotoLibrary.shared()
+//        var videoAssetPlaceholder:PHObjectPlaceholder!
+//        photoLibrary.performChanges({
+//            let request = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+//            videoAssetPlaceholder = request!.placeholderForCreatedAsset
+//        },
+//            completionHandler: { success, error in
+//                if success {
+//                    let localID = NSString(string: videoAssetPlaceholder.localIdentifier)
+//                    let assetID = localID.replacingOccurrences(of: "/.*", with: "", options: NSString.CompareOptions.regularExpression, range: NSRange())
+//                    let ext = "mp4"
+//                    let assetURLStr =
+//                    "assets-library://asset/asset.\(ext)?id=\(assetID)&ext=\(ext)"
+//
+//                    completion(assetURLStr)
+//                }
+//        })
+//    }
+    
+//    func setImageBtn() {
+//        //    MARK:- Set Image
+//        imageView.backgroundColor = .yellow
+//        imageView.downloadedImage(from: "https://image.freepik.com/free-vector/hand-drawn-dragon_53876-88179.jpg")
+//        self.view.addSubview(imageView)
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 22),
+//            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 22),
+//            imageView.heightAnchor.constraint(equalToConstant: 98),
+//            imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+//        ])
+//    }
+    
+//    func setShareBtn() {
+//        //    MARK:- Set ShareBtn
+//        shareBtn.backgroundColor = .blue
+//        shareBtn.setTitle("Share", for: .normal)
+//        self.view.addSubview(shareBtn)
+//        shareBtn.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            shareBtn.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 22),
+//            shareBtn.heightAnchor.constraint(equalToConstant: 35),
+//            shareBtn.widthAnchor.constraint(equalToConstant: 70),
+//            shareBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+//        ])
+//    }
+    
+//    @objc func shareIt(){
+//        let imagePickerController = UIImagePickerController()
+//        imagePickerController.delegate = self
+//        imagePickerController.sourceType = .photoLibrary
+//        imagePickerController.mediaTypes = [kUTTypeMovie as String]
+//        present(imagePickerController, animated: true, completion: nil)
+////        content.media = [SharePhoto(image: imageView.image!, userGenerated: true)]
+//        content.hashtag = Hashtag("#NewWorld")
+////        showShareDialog(content)
+//    }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        picker.dismiss(animated: true, completion: nil)
+//
+//        guard let videoAsset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset else {
+//          return
+//        }
+//        print(videoAsset)
+//        let content = ShareVideoContent()
+//        content.video = ShareVideo(videoAsset: videoAsset)
+//        showShareDialog(content)
+//    }
+    
   
   // MARK: Do something
+    func showShareDialog<C: SharingContent>(_ content: C, mode: ShareDialog.Mode = .automatic) {
+        let dialog = ShareDialog(fromViewController: self, content: content, delegate: self)
+        dialog.mode = mode
+        dialog.show()
+    }
   
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
+  func getNewsFromServer()
   {
-    let request = Home.Something.Request()
-    interactor?.doSomething(request: request)
+    let request = Home.Collections.Request()
+    interactor?.getResponse(request: request)
   }
   
-  func displaySomething(viewModel: Home.Something.ViewModel)
+    func displayData(viewModel: Home.Collections.Response.NewsResponse)
   {
-    //nameTextField.text = viewModel.name
+//    nameTextField.text = viewModel.name
+    self.newsData = viewModel
+
+    DispatchQueue.main.async {
+        self.tableView.reloadData()
+    }
   }
 }
